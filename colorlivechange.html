@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 100%;
+            height: auto;
+            background-color: #fff;
+            padding-top: 50px;
+        }
+        .colorshow{
+            width: 500px;
+            height: 150px;
+            background-color: rgb(128,128,128);
+            margin: auto;
+        }
+
+        .range{
+            width: 100%;
+            height: 300px;
+            display: flex;
+            justify-content: space-around;
+            padding-top: 100px;
+        }
+        .range-item{
+          text-align: center;
+        }
+        h1{
+            text-align: center;
+            color:#fff;
+     
+        }
+        h1:hover{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+        <div class="container">
+            <div class="colorshow" id="colorshow">
+                <h1 id="colorcode" onclick="Copied()"> rgb(128,128,128)</h1>
+            </div>
+            <div class="range">
+                <div class="range-item">
+                    <p>RED</p>
+                    <input type="range" name="red" id="red" min="0" max="255" onclick="Color()">
+                    <p id="rvalue">128</p>
+                </div>
+                <div class="range-item">
+                    <p>GREEN</p>
+                    <input type="range" name="green" id="green" min="0" max="255" onclick="Color()">
+                    <p id="gvalue">128</p>
+                </div>
+                <div class="range-item">
+                    <p>BLUE</p>
+                    <input type="range" name="blue" id="blue" min="0" max="255" onclick="Color()">
+                    <p id="bvalue">128</p>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+            function Color(){
+                var r = document.getElementById('red').value;
+                var g = document.getElementById('green').value;
+                var b = document.getElementById('blue').value; 
+                
+                console.log("Red " +r);
+                console.log("Green " +g);
+                console.log("Blue " +b);
+                document.getElementById('rvalue').innerHTML = r;
+                document.getElementById('gvalue').innerHTML = g;
+                document.getElementById('bvalue').innerHTML = b;
+                var color = "rgb(" + r + "," + g + "," + b + ")";   // "rgb(r,g,b)";
+                console.log(color);
+                document.getElementById('colorcode').innerHTML =color;
+
+                document.getElementById('colorshow').style.background = color;
+            }
+
+            function Copied(){
+                console.log("Hello")
+                var ccode = document.getElementById('colorcode').innerHTML;
+                navigator.clipboard.writeText(ccode);
+                alert("Color code Copied");
+            }
+            
+        </script>
+</body>
+</html>
